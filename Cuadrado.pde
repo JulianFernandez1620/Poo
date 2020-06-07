@@ -22,6 +22,7 @@ void pintarcuadrado(){
  fill(200,100,200);
  noStroke();
  circle(0,0,radioc);
+ pop();
  
 }  
   
