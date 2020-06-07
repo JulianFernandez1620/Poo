@@ -23,7 +23,6 @@ void pintarcuadrado(){
  fill(200,100,200);
  noStroke();
  circle(0,0,radioc);
- pop();
 }  
  int medida2(){
    distancia1 = 1200-(1200-posicionx);
