@@ -5,12 +5,8 @@
   Triangulo triangulo4;
   Triangulo triangulo5;
   Trapecio trapecio;
-  Nivel nivel1_1 ;
-  Nivel nivel1_2[] = new Nivel[6];
-  Nivel nivel1_3 ;
-  Nivel nivel2_1 ;
-  Nivel nivel2_2[] = new Nivel[6];
-  Nivel nivel2_3 ;
+  Nivel nivel1[] = new Nivel[8];
+  Nivel nivel2[] = new Nivel[8];
   PFont fuente;
   int x=500;
   int y=465;
@@ -25,22 +21,9 @@
   int i = 0;
   int d;
   int puntox;
-  int puntoy;
-  color col_c ;
-  color col_t ;
-  color col_t2 ;
-  color col_t3 ;
-  color col_t4 ;
-  color col_t5 ;
-  color col_tr ;
-  color col_lvl1_1 ;
-  color col_lvl1_2 ;
-  color col_lvl1_3 ;
-  color col_lvl1_4 ;
-  color col_lvl1_5 ;
-  color col_lvl1_6 ;
-  color col_lvl1_7 ;
-  
+  int puntoy;  
+  int puntox2;
+  int puntoy2;  
   
   void mouseClicked(){
   
@@ -132,22 +115,22 @@
     }
   void nivel1(int a){
     if(a == 0){
-    nivel1_1.pintarcuadrado();
-    nivel1_2[0].pintartriangulo();
-    nivel1_2[1].pintartriangulo();
-    nivel1_2[2].pintartriangulo();
-    nivel1_2[3].pintartriangulo();
-    nivel1_2[4].pintartriangulo();
-    nivel1_3.pintartrapecio();
+    nivel1[0].pintarcuadrado();
+    nivel1[1].pintartriangulo();
+    nivel1[2].pintartriangulo();
+    nivel1[3].pintartriangulo();
+    nivel1[4].pintartriangulo();
+    nivel1[5].pintartriangulo();
+    nivel1[6].pintartrapecio();
   }
   else if(a == 1){
-    nivel2_1.pintarcuadrado();
-    nivel2_2[0].pintartriangulo();
-    nivel2_2[1].pintartriangulo();
-    nivel2_2[2].pintartriangulo();
-    nivel2_2[3].pintartriangulo();
-    nivel2_2[4].pintartriangulo();
-    nivel2_3.pintartrapecio();
+    nivel2[0].pintarcuadrado();
+    nivel2[1].pintartriangulo();
+    nivel2[2].pintartriangulo();
+    nivel2[3].pintartriangulo();
+    nivel2[4].pintartriangulo();
+    nivel2[5].pintartriangulo();
+    nivel2[6].pintartrapecio();
   }
   }
   
@@ -183,8 +166,7 @@
   }
   void juegonuevo(){
 
-    //if((distanciac(i) <10) && ((distanciat(i) <10   && distanciat2(i) <10 ) || (distanciat_(i) <10   && distanciat2_(i) <10)) && (distanciat3(i) <10) && ((distanciat4(i) <10  && distanciat5(i) <10) || (distanciat4_(i) <10  && distanciat5_(i) <10)) && (distanciatr(i) <10) ){
-      if(dist(distanciapxt(i),distanciapyt(i),distanciapxlvltg(i),distanciapylvltg(i))<2){
+    if((distanciac(i) <2) && ((distanciat(i) <2   && distanciat2(i) <2 ) || (distanciat_(i) <10   && distanciat2_(i) <2)) && (distanciat3(i) <2) && ((distanciat4(i) <2  && distanciat5(i) <2) || (distanciat4_(i) <2  && distanciat5_(i) <2)) && (distanciatr(i) <2) ){
       if(boton2){
         boton2 = false;
         i = i+1;
@@ -201,39 +183,38 @@
       text("Siguiente",450,390);
       }
     }
-   // }
   else{
     juego();
   }
   }
   int distanciac(int a){
   if (a == 0){
-    d = nivel1_1.medida()-cuadrado.medida2();
+    d = nivel1[0].medida()-cuadrado.medida2();
   }
   else if (a == 1){
-    d = nivel2_1.medida()-cuadrado.medida2();
+    d = nivel2[0].medida()-cuadrado.medida2();
   }
   return (d);
   }
   
   int distanciat(int a){
   if (a == 0){
-    d = nivel1_2[0].medida()-triangulo.medida2();
+    d = nivel1[1].medida()-triangulo.medida2();
   }
   else if (a == 1){
-    d = nivel2_2[0].medida()-triangulo.medida2();
+    d = nivel2[1].medida()-triangulo.medida2();
   }
   return (d);
   }
   
   int distanciat_(int a){
   if (a == 0){
-    d = nivel1_2[1].medida()-triangulo.medida2();
+    d = nivel1[2].medida()-triangulo.medida2();
 
    }
   else if (a == 1){
 
-    d = nivel2_2[1].medida()-triangulo.medida2();
+    d = nivel2[2].medida()-triangulo.medida2();
 
   }
   return (d);
@@ -241,12 +222,12 @@
  
    int distanciat2_(int a){
   if (a == 0){
-    d = nivel1_2[0].medida()-triangulo2.medida2();
+    d = nivel1[1].medida()-triangulo2.medida2();
 
    }
   else if (a == 1){
 
-    d = nivel2_2[0].medida()-triangulo2.medida2();
+    d = nivel2[1].medida()-triangulo2.medida2();
 
   }
   return (d);
@@ -254,33 +235,31 @@
   
    int distanciat2(int a){
   if (a == 0){
-  d = nivel1_2[1].medida()-triangulo2.medida2();
+  d = nivel1[2].medida()-triangulo2.medida2();
   
   }
   else if (a == 1){
-    d = nivel2_2[1].medida()-triangulo2.medida2();
+    d = nivel2[2].medida()-triangulo2.medida2();
   }
   return (d);
   }
   
-
-  
    int distanciat3(int a){
   if (a == 0){
-    d = nivel1_2[2].medida()-triangulo3.medida2();
+    d = nivel1[3].medida()-triangulo3.medida2();
   }
   else if (a == 1){
-    d = nivel2_2[2].medida()-triangulo3.medida2();
+    d = nivel2[3].medida()-triangulo3.medida2();
   }
   return (d);
   }
   
    int distanciat4(int a){
   if (a == 0){
-    d = nivel1_2[3].medida()-triangulo4.medida2();
+    d = nivel1[4].medida()-triangulo4.medida2();
   }
   else if (a == 1){
-    d = nivel2_2[3].medida()-triangulo4.medida2();
+    d = nivel2[4].medida()-triangulo4.medida2();
   }
   return (d);
   }
@@ -288,31 +267,31 @@
      int distanciat4_(int a){
   if (a == 0){
    
-    d = nivel1_2[4].medida()-triangulo4.medida2();
+    d = nivel1[5].medida()-triangulo4.medida2();
  
   }
   else if (a == 1){
-    d = nivel2_2[4].medida()-triangulo4.medida2();
+    d = nivel2[5].medida()-triangulo4.medida2();
   }
   return (d);
   }
   
    int distanciat5(int a){
   if (a == 0){
-    d = nivel1_2[4].medida()-triangulo5.medida2();
+    d = nivel1[5].medida()-triangulo5.medida2();
   }
   else if (a == 1){
-    d = nivel2_2[4].medida()-triangulo5.medida2();
+    d = nivel2[5].medida()-triangulo5.medida2();
   }
   return (d);
   }
   
      int distanciat5_(int a){
        if(a == 0){
-    d = nivel1_2[3].medida()-triangulo5.medida2();
+    d = nivel1[4].medida()-triangulo5.medida2();
   }
   else if (a == 1){
-    d = nivel2_2[3].medida()-triangulo5.medida2();
+    d = nivel2[4].medida()-triangulo5.medida2();
   }
   return (d);
   }
@@ -320,63 +299,18 @@
   
    int distanciatr(int a){
   if (a == 0){
-    d = nivel1_3.medida()-trapecio.medida2();
+    d = nivel1[6].medida()-trapecio.medida2();
   }
   else if (a == 1){
-    d = nivel2_3.medida()-trapecio.medida2();
+    d = nivel2[6].medida()-trapecio.medida2();
   }
   return (d);
-  }
-  
-  int distanciapxt(int a){
-    if(a == 0){
-    puntox = triangulo.posicionx - triangulo.posx2;
-    }
-    else if(a == 1){
-    puntox = triangulo.posicionx - triangulo.posx2;
-    }
-    println(puntox);
-  return (puntox);
-  }
-  
-   int distanciapyt(int a){
-    if(a == 0){
-    puntoy = triangulo.posiciony + triangulo.posy2;
-    }
-    else if(a == 1){
-    puntoy = triangulo.posiciony - triangulo.posy2;
-    }
-     println(puntoy);
-  return (puntoy);
-  }
-  
-  int distanciapxlvltg(int a){
-    if(a == 0){
-    puntox = nivel1_2[0].posicionx + nivel1_2[0].posxt2;
-    }
-    else if(a == 1){
-    puntox = nivel2_2[0].posicionx - nivel2_2[0].posxt2;
-    }
-    //println(puntox);
-  return (puntox);
-  }
-  
-   int distanciapylvltg(int a){
-    if(a == 0){
-    puntoy = nivel1_2[0].posiciony + nivel1_2[0].posyt2;
-    }
-    else if(a == 1){
-    puntoy = nivel2_2[0].posiciony - nivel2_2[0].posyt2;
-    }
-   //println(puntoy);
-  return (puntoy);
   }
   
   void setup(){
     size (1200,700,P2D);
     fuente = loadFont("AlgerianTangram.vlw");
     textFont(fuente);
-    //next = new Shape(0,0,0,0,0,0,0,0,0);
     cuadrado = new Cuadrado(317,476,20,5,3.1415/4,50,-60,-55,124,200,100,200);
     triangulo = new Triangulo(320,270,20,5,0,50,-180,-50,-5,125,170,-50,20,45,150);
     triangulo2 = new Triangulo(440,400,20,5,3.1415/2,50,-180,-50,-5,125,170,-50,200,0,65);
@@ -384,22 +318,20 @@
     triangulo4 = new Triangulo(260,397,20,5,3*3.1415/2,50,-83,-33,3,52,87,-33,200,0,0);
     triangulo5 = new Triangulo(404,535,20,5,3.1415,50,-83,-33,3,52,87,-33,200,45,0);
     trapecio = new Trapecio(180,355,20,5,3.1415/4,50,-125,-66, 3,56, 123, 58, 5 ,-65,200,130,0,false,false);
-    nivel1_1 = new Nivel(845, 260, 0, 0,3.1415/4, 0,-60,-55,124,120,145,150);
-    nivel1_2[0] = new Nivel(850, 605, 0, 0, 3.1415, 0, -180,-50,-5,125,170,-50,120,145,150);
-    nivel1_2[1] = new Nivel(936,495,0, 0,5*3.1415/4 , 0, -180,-50,-5,125,170,-50,120,145,150);
-    nivel1_2[2] = new Nivel(900, 365, 0, 0, 3.1415, 0,-125,-45,-5,75,115,-45,120,145,150);
-    nivel1_2[3] = new Nivel(895, 178, 0, 0, 3.1415/2, 0,-83,-33,3,52,87,-33,120,145,150);
-    nivel1_2[4] = new Nivel(788, 183, 0, 0, 3*3.1415/2, 0,-83,-33,3,52,87,-33,120,145,150);
-    nivel1_3 = new Nivel(720, 528, 0, 0,3.1415/4, 0,-63,-8,63,118,60,-8,-63,-135,120,145,150);
-    nivel2_1 = new Nivel(760, 355, 0, 0,3.1415, 0,-60,-55,124,120,145,150);
-    nivel2_2[0] = new Nivel(1000, 360, 0, 0, 3.1415, 0, -180,-50,-5,125,170,-50,120,145,150);
-    nivel2_2[1] = new Nivel(882,230,0, 0,3*3.1415/2 , 0, -180,-50,-5,125,170,-50,120,145,150);
-    nivel2_2[2] = new Nivel(920, 480, 0, 0, 2*3.1415, 0,-125,-45,-5,75,115,-45,120,145,150);
-    nivel2_2[3] = new Nivel(780, 251, 0, 0, 7*3.1415/4, 0,-83,-33,3,52,87,-33,120,145,150);
-    nivel2_2[4] = new Nivel(657, 375, 0, 0, 7*3.1415/4, 0,-83,-33,3,52,87,-33,120,145,150);
-    nivel2_3 = new Nivel(795, 498, 0, 0,2*3.1415, 0,-125,-66, 3,56, 123, 58, 5 ,-65,120,145,150);
-    
-    
+    nivel1[0] = new Nivel(845, 260, 0, 0,3.1415/4, 0,-60,-55,124,120,145,150);
+    nivel1[1] = new Nivel(850, 605, 0, 0, 3.1415, 0, -180,-50,-5,125,170,-50,120,145,150);
+    nivel1[2] = new Nivel(936,495,0, 0,5*3.1415/4 , 0, -180,-50,-5,125,170,-50,120,145,150);
+    nivel1[3] = new Nivel(900, 365, 0, 0, 3.1415, 0,-125,-45,-5,75,115,-45,120,145,150);
+    nivel1[4] = new Nivel(895, 178, 0, 0, 3.1415/2, 0,-83,-33,3,52,87,-33,120,145,150);
+    nivel1[5] = new Nivel(788, 183, 0, 0, 3*3.1415/2, 0,-83,-33,3,52,87,-33,120,145,150);
+    nivel1[6] = new Nivel(720, 528, 0, 0,3.1415/4, 0,-63,-8,63,118,60,-8,-63,-135,120,145,150);
+    nivel2[0] = new Nivel(760, 355, 0, 0,3.1415, 0,-60,-55,124,120,145,150);
+    nivel2[1] = new Nivel(1000, 360, 0, 0, 3.1415, 0, -180,-50,-5,125,170,-50,120,145,150);
+    nivel2[2] = new Nivel(882,230,0, 0,3*3.1415/2 , 0, -180,-50,-5,125,170,-50,120,145,150);
+    nivel2[3] = new Nivel(920, 480, 0, 0, 2*3.1415, 0,-125,-45,-5,75,115,-45,120,145,150);
+    nivel2[4] = new Nivel(780, 251, 0, 0, 7*3.1415/4, 0,-83,-33,3,52,87,-33,120,145,150);
+    nivel2[5] = new Nivel(657, 375, 0, 0, 7*3.1415/4, 0,-83,-33,3,52,87,-33,120,145,150);
+    nivel2[6] = new Nivel(795, 498, 0, 0,2*3.1415, 0,-125,-66, 3,56, 123, 58, 5 ,-65,120,145,150);
   }
   
   void draw(){
