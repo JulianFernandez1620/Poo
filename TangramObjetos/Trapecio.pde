@@ -74,5 +74,10 @@ void keyReleased(){
  //println(distancia1);
  return distancia1;
  }
+  int medida2y(){
+ distancia1y = 800-(800-posiciony);
+ //println(distancia2);
+ return distancia1y;
+}
 
 }
