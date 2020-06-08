@@ -1,4 +1,4 @@
-     Cuadrado cuadrado;
+Cuadrado cuadrado;
   Triangulo triangulo ;
   Triangulo triangulo2;
   Triangulo triangulo3;
@@ -7,6 +7,7 @@
   Trapecio trapecio;
   Nivel nivel1[] = new Nivel[8];
   Nivel nivel2[] = new Nivel[8];
+  Nivel nivel3[] = new Nivel[8];
   PFont fuente;
   int x=500;
   int y=465;
@@ -16,6 +17,10 @@
   int y_ = 565;
   int w_ = 360;
   int h_ = 40;
+  int x3 = 1000;
+  int y3 = 660;
+  int w3 = 190;
+  int h3 = 40;
   int x2=450;
   int y2=350;
   int w2=250;
@@ -23,6 +28,7 @@
   boolean boton = false;
   boolean boton_ = false;
   boolean boton2 ;
+  boolean boton3 ;
   int i = 0;
   int d;
   int puntox;
@@ -52,7 +58,7 @@
   
   }
   void mousePressed(){
-    if((mouseX>x)&&(mouseX< x2+w2)&&(mouseY>y2)&&(mouseY< y2+h2)){
+    if((mouseX>x2)&&(mouseX< x2+w2)&&(mouseY>y2)&&(mouseY< y2+h2)){
       if(boton2){
         boton2 = false;
       }
@@ -60,7 +66,16 @@
       boton2 = true;
       }
     }
+    else if((mouseX>x3)&&(mouseX< x3+w3)&&(mouseY>y3)&&(mouseY< y3+h3)){
+      if(boton3){
+        boton3 = false;
+      }
+      else{
+      boton3 = true;
+      }
+    }
    }
+   
   
   void menu(){  
   background(0);
@@ -129,6 +144,7 @@
     }
     
   void nivel(int a){
+    //loaddata();
     if(a == 0){
     nivel1[0].pintarcuadrado();
     nivel1[1].pintartriangulo();
@@ -138,7 +154,7 @@
     nivel1[5].pintartriangulo();
     nivel1[6].pintartrapecio();
   }
-  else if(a == 1){
+  else if(a == 2){
     nivel2[0].pintarcuadrado();
     nivel2[1].pintartriangulo();
     nivel2[2].pintartriangulo();
@@ -146,6 +162,15 @@
     nivel2[4].pintartriangulo();
     nivel2[5].pintartriangulo();
     nivel2[6].pintartrapecio();
+  }
+    else if(a == 1){
+    nivel3[0].pintarcuadrado();
+    nivel3[1].pintartriangulo();
+    nivel3[2].pintartriangulo();
+    nivel3[3].pintartriangulo();
+    nivel3[4].pintartriangulo();
+    nivel3[5].pintartriangulo();
+    nivel3[6].pintartrapecio();
   }
   }
   
@@ -181,13 +206,15 @@
   
   }
   void juegonuevo(){
-
-    if((distanciac(i) <2) && ((distanciat(i) <2   && distanciat2(i) <2 ) || (distanciat_(i) <10   && distanciat2_(i) <2)) && (distanciat3(i) <2) && ((distanciat4(i) <2  && distanciat5(i) <2) || (distanciat4_(i) <2  && distanciat5_(i) <2)) && (distanciatr(i) <2) ){
+    
+    if((distanciac(i) <2)&& (distanciac(i) > -2) && ((distanciat(i) <2   && distanciat2(i) <2 ) && (distanciat(i) >-2   && distanciat2(i) >-2 ) || (distanciat_(i) <10   && distanciat2_(i) <2)) && (distanciat3(i) <2) && ((distanciat4(i) <2  && distanciat5(i) <2) || (distanciat4_(i) <2  && distanciat5_(i) <2)) && (distanciatr(i) <2) ){
+      if((distanciacy(i) <2)&& (distanciacy(i) > -2)){
       if(boton2){
         boton2 = false;
         i = i+1;
         recuperarTangram();
         juegonuevo();
+      }
       }
     else{
       background(155);
@@ -209,6 +236,15 @@
   }
   else if (a == 1){
     d = nivel2[0].medida()-cuadrado.medida2();
+  }
+  return (d);
+  }
+    int distanciacy(int a){
+  if (a == 0){
+    d = nivel1[0].mediday()-cuadrado.medida2y();
+  }
+  else if (a == 1){
+    d = nivel2[0].mediday()-cuadrado.medida2y();
   }
   return (d);
   }
@@ -325,46 +361,91 @@
   
   
   void modocreador(){
-  background(0);
+     background(0);
+     if(boton3){
+       
+       recuperarTangram();
+       menu();
+     //boton3 = false;
+     }else{
+      textSize(50);
+  noFill();
+  rect(x3,y3,w3,h3);
+  text("Volver",1000,700);
+
   lienzo();
   if (keyPressed) {
     if (key == 'g' || key == 'G') {
-      saveData(figuras, "nivel1");
+      savedata();
     }
   }
+     }
   }  
   
   void savedata(){
     JSONObject json;
     JSONArray nivel = new JSONArray(); 
     JSONObject piezas = new JSONObject();
-    piezas.setFloat("posxc", cuadrado.posicionx);
-    piezas.setFloat("posyc", cuadrado.posiciony);
+    piezas.setInt("posxc", cuadrado.posicionx);
+    piezas.setInt("posyc", cuadrado.posiciony);
     piezas.setFloat("angc", cuadrado.angulo);
-    piezas.setFloat("posxt", triangulo.posicionx);
-    piezas.setFloat("posyt", triangulo.posiciony);
+    piezas.setInt("posxt", triangulo.posicionx);
+    piezas.setInt("posyt", triangulo.posiciony);
     piezas.setFloat("angt", triangulo.angulo);
-    piezas.setFloat("posxt2", triangulo2.posicionx);
-    piezas.setFloat("posyt2", triangulo2.posiciony);
+    piezas.setInt("posxt2", triangulo2.posicionx);
+    piezas.setInt("posyt2", triangulo2.posiciony);
     piezas.setFloat("angt2", triangulo2.angulo);
-    piezas.setFloat("posxt3", triangulo3.posicionx);
-    piezas.setFloat("posyt3", triangulo3.posiciony);
+    piezas.setInt("posxt3", triangulo3.posicionx);
+    piezas.setInt("posyt3", triangulo3.posiciony);
     piezas.setFloat("angt3", triangulo3.angulo);
-    piezas.setFloat("posxt4", triangulo4.posicionx);
-    piezas.setFloat("posyt4", triangulo4.posiciony);
+    piezas.setInt("posxt4", triangulo4.posicionx);
+    piezas.setInt("posyt4", triangulo4.posiciony);
     piezas.setFloat("angt4", triangulo4.angulo);
-    piezas.setFloat("posxt5", triangulo5.posicionx);
-    piezas.setFloat("posyt5", triangulo5.posiciony);
+    piezas.setInt("posxt5", triangulo5.posicionx);
+    piezas.setInt("posyt5", triangulo5.posiciony);
     piezas.setFloat("angt5", triangulo5.angulo);
-    piezas.setFloat("posxtr", trapecio.posicionx);
-    piezas.setFloat("posytr", trapecio.posiciony);
+    piezas.setInt("posxtr", trapecio.posicionx);
+    piezas.setInt("posytr", trapecio.posiciony);
     piezas.setFloat("angtr", trapecio.angulo);  
     
     json = new JSONObject();
     json.setJSONArray("piezas",nivel);
-    saveJSONObject(json,"data/new.json");
+    saveJSONObject(json,"data/niveles.json");
   
   
+  }
+void loaddata(){
+  JSONObject json = loadJSONObject("data/nivel.json");
+  JSONArray niveldata = json.getJSONArray("piezas");
+  JSONObject nivel = niveldata.getJSONObject(0);
+  int posxc = nivel.getInt("posxc");
+  int posyc = nivel.getInt("posyc");
+  float angc = nivel.getFloat("angc");
+  int posxt = nivel.getInt("posxt");
+  int posyt = nivel.getInt("posyt");
+  float angt = nivel.getFloat("angt");
+  int posxt2 = nivel.getInt("posxt2");
+  int posyt2 = nivel.getInt("posyt2");
+  float angt2 = nivel.getFloat("angt2");
+  int posxt3 = nivel.getInt("posxt3");
+  int posyt3 = nivel.getInt("posyt3");
+  float angt3 = nivel.getFloat("angt3");
+  int posxt4 = nivel.getInt("posxt4");
+  int posyt4 = nivel.getInt("posyt4");
+  float angt4 = nivel.getFloat("angt4");
+  int posxt5 = nivel.getInt("posxt5");
+  int posyt5 = nivel.getInt("posyt5");
+  float angt5 = nivel.getFloat("angt5");
+  int posxtr = nivel.getInt("posxtr");
+  int posytr = nivel.getInt("posytr");
+  float angtr = nivel.getFloat("angtr");
+  nivel3[0] = new Nivel(posxc, posyc, 0, 0,angc, 0,-60,-55,124,120,145,150);
+  nivel3[1] = new Nivel(posxt,posyt,0,0,angt,0,-180,-50,-5,125,170,-50,120,145,150);
+  nivel3[2] = new Nivel(posxt2,posyt2,0,0,angt2,0,-180,-50,-5,125,170,-50,120,145,150);
+  nivel3[3] = new Nivel(posxt3,posyt3,0,0,angt3,0,-125,-45,-5,75,115,-45,120,145,150);
+  nivel3[4] = new Nivel(posxt4,posyt4, 0, 0,angt4, 0,-83,-33,3,52,87,-33,120,145,150);
+  nivel3[5] = new Nivel(posxt5,posyt5, 0, 0,angt5, 0,-83,-33,3,52,87,-33,120,145,150);
+  nivel3[6] = new Nivel(posxtr,posytr, 0, 0,angtr,  0,-63,-8,63,118,60,-8,-63,-135,120,145,150);
   }
   
   void setup(){
