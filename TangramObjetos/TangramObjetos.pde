@@ -1,4 +1,4 @@
-    Cuadrado cuadrado;
+     Cuadrado cuadrado;
   Triangulo triangulo ;
   Triangulo triangulo2;
   Triangulo triangulo3;
@@ -327,6 +327,43 @@
   void modocreador(){
   background(0);
   lienzo();
+  if (keyPressed) {
+    if (key == 'g' || key == 'G') {
+      saveData(figuras, "nivel1");
+    }
+  }
+  }  
+  
+  void savedata(){
+    JSONObject json;
+    JSONArray nivel = new JSONArray(); 
+    JSONObject piezas = new JSONObject();
+    piezas.setFloat("posxc", cuadrado.posicionx);
+    piezas.setFloat("posyc", cuadrado.posiciony);
+    piezas.setFloat("angc", cuadrado.angulo);
+    piezas.setFloat("posxt", triangulo.posicionx);
+    piezas.setFloat("posyt", triangulo.posiciony);
+    piezas.setFloat("angt", triangulo.angulo);
+    piezas.setFloat("posxt2", triangulo2.posicionx);
+    piezas.setFloat("posyt2", triangulo2.posiciony);
+    piezas.setFloat("angt2", triangulo2.angulo);
+    piezas.setFloat("posxt3", triangulo3.posicionx);
+    piezas.setFloat("posyt3", triangulo3.posiciony);
+    piezas.setFloat("angt3", triangulo3.angulo);
+    piezas.setFloat("posxt4", triangulo4.posicionx);
+    piezas.setFloat("posyt4", triangulo4.posiciony);
+    piezas.setFloat("angt4", triangulo4.angulo);
+    piezas.setFloat("posxt5", triangulo5.posicionx);
+    piezas.setFloat("posyt5", triangulo5.posiciony);
+    piezas.setFloat("angt5", triangulo5.angulo);
+    piezas.setFloat("posxtr", trapecio.posicionx);
+    piezas.setFloat("posytr", trapecio.posiciony);
+    piezas.setFloat("angtr", trapecio.angulo);  
+    
+    json = new JSONObject();
+    json.setJSONArray("piezas",nivel);
+    saveJSONObject(json,"data/new.json");
+  
   
   }
   
