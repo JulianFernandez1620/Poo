@@ -1,0 +1,26 @@
+{
+"piezas": [{
+"posxt": 415,
+"posyt": 182,
+"angt": 3.141,
+"posxt2": 415,
+"posyt2": 182,
+"angt2": 3.1415,
+"posxt3": 415,
+"posyt3": 182,
+"angt3": 3.1415,
+"posxt4": 415,
+"posyt4": 182,
+"angt4": 3.1415,
+"posxt5": 415,
+"posyt5": 182,
+"angt5": 3.1415,
+"posxc": 415,
+"posyc": 182,
+"angc": 3.1415,
+"posx": 415,
+"posy": 182,
+"ang": 3.1415
+
+}]
+}
