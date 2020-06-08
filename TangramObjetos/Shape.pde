@@ -10,6 +10,8 @@ int b;
 int c;
 int distancia1;
 int distancia2;
+int distancia1y;
+int distancia2y;
 int punty;
   Shape(int posicionx_, int posiciony_, int retraso_, int radianes_, float angulo_, int radioc_,int a_, int b_, int c_ ){
   posicionx = posicionx_;
