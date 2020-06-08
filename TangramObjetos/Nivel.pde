@@ -92,4 +92,9 @@ int medida(){
  //println(distancia2);
  return distancia2;
 }
+int mediday(){
+ distancia2y = 800-(800-posiciony);
+ //println(distancia2);
+ return distancia2y;
+}
 }
