@@ -1,4 +1,4 @@
-  Cuadrado cuadrado;
+    Cuadrado cuadrado;
   Triangulo triangulo ;
   Triangulo triangulo2;
   Triangulo triangulo3;
@@ -12,11 +12,16 @@
   int y=465;
   int w=160;
   int h=40;
+    int x_ = 400;
+  int y_ = 565;
+  int w_ = 360;
+  int h_ = 40;
   int x2=450;
   int y2=350;
   int w2=250;
   int h2=40;
   boolean boton = false;
+  boolean boton_ = false;
   boolean boton2 ;
   int i = 0;
   int d;
@@ -35,6 +40,14 @@
       boton = true;
     }
     
+  }else if((mouseX>x_)&&(mouseX< x_+w_)&&(mouseY>y_)&&(mouseY< y_+h_)){
+    if(boton_){
+      boton_ = true;
+    }
+    else{
+      boton_ = true;
+    }
+    
   }
   
   }
@@ -42,11 +55,9 @@
     if((mouseX>x)&&(mouseX< x2+w2)&&(mouseY>y2)&&(mouseY< y2+h2)){
       if(boton2){
         boton2 = false;
-        println("verdadero");
       }
       else{
       boton2 = true;
-      println("falso");
       }
     }
    }
@@ -59,6 +70,10 @@
   text("TANGRAM",250,250);
   textSize(50);
   text("Jugar",500,500);
+  textSize(50);
+  noFill();
+  rect(x_,y_,w_,h_);
+  text("Modo Creador",400,600);
   }
     
   void lienzo(){
@@ -110,10 +125,10 @@
   
   void crearnivel(){
     background(0);
-    
-    nivel1(i);
+    nivel(i);
     }
-  void nivel1(int a){
+    
+  void nivel(int a){
     if(a == 0){
     nivel1[0].pintarcuadrado();
     nivel1[1].pintartriangulo();
@@ -133,6 +148,7 @@
     nivel2[6].pintartrapecio();
   }
   }
+  
   
   void juego(){
   crearnivel();
@@ -307,6 +323,13 @@
   return (d);
   }
   
+  
+  void modocreador(){
+  background(0);
+  lienzo();
+  
+  }
+  
   void setup(){
     size (1200,700,P2D);
     fuente = loadFont("AlgerianTangram.vlw");
@@ -339,6 +362,9 @@
     menu();
     if(boton){
     juegonuevo();
+    }
+    else if(boton_){
+    modocreador();
     }
     else{
     menu();
