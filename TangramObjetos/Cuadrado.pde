@@ -24,12 +24,16 @@ void pintarcuadrado(){
  noStroke();
  circle(0,0,radioc);
  pop();
- 
 }  
  int medida2(){
    distancia1 = 1200-(1200-posicionx);
  //println(distancia1);
  return distancia1;
- } 
+ }
+  int medida2y(){
+ distancia1y = 800-(800-posiciony);
+ //println(distancia2);
+ return distancia1y;
+}
   
 }
