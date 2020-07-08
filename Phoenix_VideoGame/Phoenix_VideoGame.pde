@@ -330,15 +330,19 @@ void reiniciar() {
   cntVidas = 3;
   rankE=2;
   ArrayList<Bomba> elimBomb = new ArrayList<Bomba>(); 
-  ArrayList<Enemigo> elimEne = new ArrayList<Enemigo>(); 
+  ArrayList<Enemigo> elimEne = new ArrayList<Enemigo>();
+  ArrayList<Metrallo> elimBal = new ArrayList<Metrallo>();
   for (Bomba e : bombas) {
     elimBomb.add(e);
   }
   for (Enemigo e : loks) {
     elimEne.add(e);
+  }for (Metrallo e : balas) {
+    elimBal.add(e);
   }
   bombas.removeAll(elimBomb);
   loks.removeAll(elimEne);
+  balas.removeAll(elimBal);
   for (int i = 0; i<10; i++) {
     Enemigo lok = new Enemigo(i*40+10, rankE);
     loks.add(lok);
