@@ -17,9 +17,9 @@ class Bomba extends Metrallo {
   }  
   void mover() {
     if(Nenemigo%2==0){
-    y += velocidad;
+    y += velocidad+Nenemigo;
     }else if(Nenemigo%2!=0){
-    y += velocidad+2;
+    y += velocidad+Nenemigo+1;
     }
     
   }
